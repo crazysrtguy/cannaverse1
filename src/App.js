@@ -11,7 +11,6 @@ import RoadMap from './RoadMap';
 import Blaster from './Blaster';
 import Globe from './Globe';
 import Video from './Video';
-import Open from './Book/Open';
 
 import './App.css';
 
