@@ -32,7 +32,6 @@ function App() {
           <Route path="/road-map" element={<RoadMap />} />
           <Route path="/blaster" element={<Blaster />} />
           <Route path="/globe" element={<Globe/>} />
-          <Route path="/open" element={<Open />} />
 
           <Route path="/video" element={<Video/>} />
           <Route path="/my-planets" element={<MyPlanets planets={planets} />} />
