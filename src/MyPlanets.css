@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&display=swap');
+
+/* Your CSS here */
+
+@keyframes twinkling {
+    0% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.star {
+    position: absolute;
+    background-color: #FFF;
+    width: 1px;
+    height: 1px;
+    opacity: 0.5;
+    animation: twinkling 2s infinite alternate;
+}
+
+.galaxy {
+    position: absolute;
+    background: radial-gradient(ellipse at center, rgba(255,255,255,1) 0%, rgba(255,255,255,0.01) 60%, rgba(0,0,0,0.65) 80%, rgba(0,0,0,0.8) 100%);
+    width: 500px;
+    height: 500px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: -1;
+}
+
+
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Slight transparency on a black background */
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.footer a {
+    color: #ff6600; /* Orange color */
+    text-decoration: none; /* Removes underline */
+    margin: 0 1rem; /* Some spacing between links */
+    text-shadow: 0px 0px 10px #ff6600; /* Orange glowing effect */
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+.footer a:hover {
+    color: #ff9933; /* Slightly different shade of orange on hover for interaction feedback */
+}
+
+/* Star Wars Text Crawl */
+#crawl-container {
+    position: absolute;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    perspective: 300px;
+    pointer-events: none; 
+    z-index: 1;
+}
+
+  
+#crawl {
+    position: absolute;
+    width: 90%; /* Adjust width as needed */
+    bottom: 0;
+
+    left: 5%; /* Centers the crawl text */
+    animation: crawl-animation 125s linear forwards;
+    transform-origin: 50% 100%;
+    pointer-events: none; /* This ensures the crawl text itself can still capture mouse events if needed */
+
+    transform: rotateX(20deg) translateY(100%); /* Starts with translateY(100%) so it begins off-screen */
+}
+
+
+.title {
+    font-size: 49px;
+    margin-bottom: 5px;
+    color: yellow;
+    font-family: 'Pathway Gothic One', sans-serif;
+
+}
+
+.subtitle {
+    font-size: 39px;
+    margin-bottom: 5px;
+    color: yellow;
+    font-family: 'Pathway Gothic One', sans-serif;
+
+
+}
+
+.text {
+    font-family: 'Pathway Gothic One', sans-serif;
+    font-size: 2em;
+    letter-spacing: 6px;
+
+    font-weight: bold;
+    color: yellow;
+    text-align: center;
+    perspective: 400px;
+    transform: rotateX(20deg) translateY(25%);
+    transform-origin: 50% 100%;
+    line-height: 2.5;
+    overflow: hidden;
+}
+
+  
+@keyframes crawl-animation {
+    0% {
+        transform: rotateX(20deg) translateY(100%);
+    }
+    100% {
+        transform: rotateX(20deg) translateY(-400%); /* Adjust translateY value if text disappears too quickly/slowly */
+    }
+  }
+  .title, .subtitle, .text {
+    text-align: center;
+    font-family: 'Pathway Gothic One', sans-serif;
+}

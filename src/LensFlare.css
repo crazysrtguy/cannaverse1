@@ -1,0 +1,76 @@
+.containerRef {
+
+    position: relative;
+     overflow: scroll;
+}
+
+.planet-popup {
+  position: fixed;
+  top: 50%;
+  left: 15%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 28px;
+  max-width: 355px;
+  text-align: left;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+
+.planet-popup h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.planet-popup p {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.planet-popup button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgba(14, 109, 250, 0.2);  /* semi-transparent white */
+  color: rgb(19, 18, 18);
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+}
+
+.planet-popup button:hover {
+  background-color: rgba(255, 255, 255, 0.4);  /* slightly less transparent white on hover */
+}
+
+.footer {
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%); 
+  z-index: 1;
+}
+
+.footer a {
+  margin: 0 15px;
+  padding: 5px 10px;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+  text-shadow: 0 0 5px #00bcd4, 0 0 10px #00bcd4, 0 0 20px #00bcd4, 0 0 30px #00bcd4;
+  box-shadow: 0 0 5px #00bcd4, 0 0 10px #00bcd4, 0 0 20px #00bcd4, 0 0 30px #00bcd4;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border-radius: 8px;
+}
+
+.footer a:hover {
+  color: #00bcd4;
+  text-shadow: 0 0 10px #00bcd4, 0 0 20px #00bcd4, 0 0 30px #00bcd4, 0 0 40px #00bcd4;
+  box-shadow: 0 0 10px #00bcd4, 0 0 20px #00bcd4, 0 0 30px #00bcd4, 0 0 40px #00bcd4;
+}
+
+
+
+  
+  

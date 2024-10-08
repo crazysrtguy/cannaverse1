@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100..900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif; /* Or any other preferred font */
+}
+
+body {
+  background-color: #FFFFFF; /* Or any other color */
+  color: #333; /* Default text color */
+  font-size: 16px; /* Default font size */
+  line-height: 1.5; /* Default line height */
+  overflow-x: hidden; /* Prevent any unexpected horizontal scrolling */
+}
+
+/* Add a max-width for containers */
+.container {
+  width: 100%;
+  max-width: 1200px; /* Maximum width on larger screens */
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Ensure responsive text sizing using rem units */
+h1, h2, h3, p {
+  font-size: 1rem; /* Base font size for smaller screens */
+}
+
+h1 {
+  font-size: 2rem; /* Adjust for larger screens */
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 2.5rem; /* Larger font size on tablets and above */
+  }
+
+  body {
+    font-size: 18px; /* Slightly larger base font on tablet screens */
+  }
+}
+
+@media (min-width: 1024px) {
+  h1 {
+    font-size: 3rem; /* Even larger on desktop */
+  }
+
+  body {
+    font-size: 20px;
+  }
+}
+
+/* Flexbox for layout */
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.flex-item {
+  flex: 1 1 100%; /* Full width on small screens */
+}
+
+@media (min-width: 768px) {
+  .flex-item {
+    flex: 1 1 48%; /* Two-column layout on tablets */
+  }
+}
+
+@media (min-width: 1024px) {
+  .flex-item {
+    flex: 1 1 30%; /* Three-column layout on desktop */
+  }
+}
+
+/* Responsive images */
+img {
+  max-width: 100%;
+  height: auto; /* Ensure images scale properly */
+}
+
+/* Utility classes for padding and margins */
+.mt-2 {
+  margin-top: 2rem;
+}
+
+.mb-2 {
+  margin-bottom: 2rem;
+}
+
+/* Button Styles */
+button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #007BFF; /* Example button color */
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}

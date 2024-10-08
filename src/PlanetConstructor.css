@@ -1,0 +1,202 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Arial', sans-serif; /* Setting a default font */
+}
+
+* {
+    box-sizing: border-box; /* Ensure padding doesn't increase size */
+}
+
+.planet-constructor-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    position: relative; 
+    overflow: hidden; /* This ensures no scrolling occurs due to out-of-bound elements */
+}
+
+.form-container {
+    position: absolute; /* Absolute positioning to float the form */
+    right: 1%; /* Position it towards the left, adjust to your needs */
+    top: 50%; /* This, combined with transform, centers the form vertically */
+    transform: translateY(-50%); 
+    width: 28%;
+    height: 100%; /* Keeping the width as previously defined */
+    background-color: rgba(223, 144, 144, 0.7);
+    padding: 15px;
+    border-radius: 10px;
+    z-index: 10; /* Keeping it above the scene */
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+/* For all form controls */
+.form-container input,
+.form-container textarea,
+.form-container button {
+    display: block; /* To ensure each form control takes the full width available */
+    width: 100%; 
+    margin: 1px 0; /* Add space between the controls */
+}
+
+/* Specific styling for input fields and textarea */
+.form-container input[type="text"],
+.form-container input[type="number"],
+.form-container input[type="range"],
+.form-container input[type="file"],
+.form-container textarea {
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    padding: 10px; 
+    outline: none; /* Remove the default browser outline */
+}
+
+/* Styling for input and textarea placeholders */
+.form-container input::placeholder,
+.form-container textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+    font-style: italic;
+}
+
+/* Enhance the look when an input or textarea is focused */
+.form-container input:focus,
+.form-container textarea:focus {
+    border-color: #00bcd4;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* For the textarea, you might want to control its height */
+.form-container textarea {
+    height: 40px; /* Adjust as per your needs */
+    resize: vertical; /* Allow only vertical resizing */
+}
+
+
+form h2 {
+
+    text-align: center;
+    color: #fff;
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+label {
+    font-weight: bold;
+    margin-top: 5px;
+    color: #fff;
+    font-size: 12px;
+
+}
+
+input, textarea {
+    padding: 1px 1px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+
+
+button {
+    background: #00bcd4;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+    align-self: center;
+}
+
+button:hover {
+    background: #008ba4; /* Slightly darker shade for hover */
+}
+
+span {
+    color: #00E676; /* A green shade for successful messages */
+    margin-top: 5px;
+    text-align: center;
+}
+.planet-display-container {
+    width: 100%; /* This will stretch across the entire viewport */
+    height: 100vh;
+    position: relative;
+
+}
+
+.rotation-speed-container {
+    position: absolute;
+    position: absolute;
+    bottom: 8%;
+    left: 48.2%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 10px;
+  }
+  
+  .slider-container {
+    position: absolute;
+    bottom: 8%;
+    left: 63%;
+    transform: translateX(-63%); 
+    z-index: 1;
+    justify-content: center;
+    padding: 10px;
+  }
+  
+  /* Change the color of the slider thumb for WebKit browsers */
+  input[type="range"]::-webkit-slider-thumb {
+    background-color: #48ff00; /* Change to your desired color */
+  }
+  
+  /* Change the color of the slider thumb for Firefox */
+  input[type="range"]::-moz-range-thumb {
+    background-color: #48ff00; /* Change to your desired color */
+  }
+  
+  /* Change the color of the slider thumb for Edge */
+  input[type="range"]::-ms-thumb {
+    background-color: #48ff00; /* Change to your desired color */
+  }
+  
+  
+.footer {
+    position: absolute;
+    bottom: 4%;
+    left: 63%;
+    transform: translateX(-63%); 
+    z-index: 1;
+}
+
+.footer a {
+    margin: 0 15px;
+    padding: 5px 10px;
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+    text-shadow: 0 0 5px #00bcd4, 0 0 10px #00bcd4, 0 0 20px #00bcd4, 0 0 30px #00bcd4;
+    box-shadow: 0 0 5px #00bcd4, 0 0 10px #00bcd4, 0 0 20px #00bcd4, 0 0 30px #00bcd4;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border-radius: 8px;
+}
+
+.footer a:hover {
+    color: #00bcd4;
+    text-shadow: 0 0 10px #00bcd4, 0 0 20px #00bcd4, 0 0 30px #00bcd4, 0 0 40px #00bcd4;
+    box-shadow: 0 0 10px #00bcd4, 0 0 20px #00bcd4, 0 0 30px #00bcd4, 0 0 40px #00bcd4;
+}
+
+.cursor {
+    transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform-style: preserve-3d;
+    opacity: 1;
+}
