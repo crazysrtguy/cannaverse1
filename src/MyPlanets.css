@@ -83,7 +83,7 @@
     left: 10%;
     width: 80%;
     transform: translateX(-50%) rotateX(25deg);
-    animation: crawl 90s linear forwards;
+    animation: crawl 60s linear forwards;
 }
 
 @keyframes crawl {
