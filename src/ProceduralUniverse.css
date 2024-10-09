@@ -1,72 +1,78 @@
 /* ProceduralUniverse.css */
 
 .universe-container {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-  }
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
 
-  .popup {
-    position: fixed;
-    top: 50%;
-    left: 12%;
-    width: 20%;
-    transform: translate(-50%, -50%);
-    padding: 20px;
-    background-color: #222;
-    color: #fff;
-    border-radius: 10px;
-    display: none;
-    box-shadow: 0 0 20px #00f8ff, 0 0 30px #00f8ff, 0 0 40px #00f8ff;
-  }
-  .popup.left-side {
-    /* define your styles for left side here */
-    left: 10px;
-  }
-  
-  .popup.right-side {
-    /* define your styles for right side here */
-    right: 10px;
-  }
-  
-  .popup h3 {
-    color: white;
-    font-weight: bold;
-  }
-  
-  .show-popup {
-    display: block;
-  }
-  
-  .floating-btn {
-    position: fixed;
-    bottom: 80px;
-    left: 45%;
-    transform: translateY(50%);
-    background-color: #ee77c0;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 20px;
-    cursor: pointer;
-    z-index: 1000; /* To ensure it's on top */
+.popup {
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  width: 80%; /* Use percentage to adapt to screen size */
+  max-width: 400px;
+  max-length: 400px; /* Ensure it doesn't get too large on bigger screens */
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: #222;
+  color: #fff;
+  border-radius: 10px;
+  display: none;
+  box-shadow: 0 0 20px #00f8ff, 0 0 30px #00f8ff, 0 0 40px #00f8ff;
+}
+
+.popup.left-side {
+  left: 10px;
+  right: auto;
+  transform: none; /* Remove center alignment for left-side popups */
+}
+
+.popup.right-side {
+  right: 10px;
+  left: auto;
+  transform: none; /* Remove center alignment for right-side popups */
+}
+
+.popup h3 {
+  color: white;
+  font-weight: bold;
+}
+
+.show-popup {
+  display: block;
+}
+
+.floating-btn {
+  position: fixed;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ee77c0;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  z-index: 1000;
 }
 
 .floating-btn:hover {
-    background-color: #97e769;
+  background-color: #97e769;
 }
 
 .footer {
   position: absolute;
   bottom: 5px;
   left: 50%;
-  transform: translateX(-50%); 
+  transform: translateX(-50%);
   z-index: 1;
+  font-size: 14px; /* Smaller font for mobile */
 }
 
 .footer a {
-  margin: 0 15px;
+  margin: 0 10px;
   padding: 5px 10px;
   color: #fff;
   text-decoration: none;
@@ -84,19 +90,19 @@
   box-shadow: 0 0 10px #00bcd4, 0 0 20px #00bcd4, 0 0 30px #00bcd4, 0 0 40px #00bcd4;
 }
 
-/* ProceduralUniverse.css */
-
 .end-game {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 90%; /* Ensure it fits on mobile */
+  max-width: 400px;
   background-color: rgba(0, 0, 0, 0.7);
   color: white;
   padding: 20px;
   border-radius: 5px;
   text-align: center;
-  z-index: 1000; /* Ensure it's on top of other elements */
+  z-index: 1000;
 }
 
 .end-game button {
@@ -115,8 +121,32 @@
   color: white;
   border-radius: 5px;
   font-size: 16px;
-  z-index: 1000; /* Ensure it's on top of other elements */
+  z-index: 1000;
 }
 
+/* Mobile-specific adjustments */
+@media (max-width: 600px) {
+  .popup {
+    width: 90%; /* Make sure it fits on smaller screens */
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 
+  .floating-btn {
+    bottom: 5%; /* Bring button higher on small screens */
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .footer {
+    font-size: 12px;
+  }
   
+  .end-game {
+    width: 90%;
+  }
+
+  .score-box {
+    font-size: 14px;
+  }
+}

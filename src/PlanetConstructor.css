@@ -29,8 +29,8 @@ body, html {
     padding: 15px;
     border-radius: 10px;
     z-index: 10; /* Keeping it above the scene */
-    overflow-y: hidden;
-    overflow-x: hidden;
+    overflow-y: auto;
+    overflow-x: auto;
 }
 /* For all form controls */
 .form-container input,
@@ -80,14 +80,14 @@ form h2 {
     text-align: center;
     color: #fff;
     margin-bottom: 5px;
-    font-size: 18px;
+    font-size: 12px;
 }
 
 label {
     font-weight: bold;
     margin-top: 5px;
     color: #fff;
-    font-size: 12px;
+    font-size: 10px;
 
 }
 

@@ -200,13 +200,21 @@ explosionSoundRef.current.onerror = (e) => {
 
   useEffect(() => {
     const scene = sceneRef.current = new THREE.Scene();
-
+  
     const camera = new THREE.PerspectiveCamera(105, window.innerWidth / window.innerHeight, 0.1, 15000);
     camera.position.z = 12000; // Set camera initial position
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     mountRef.current.appendChild(renderer.domElement);
-
+  
+    const handleResize = () => {
+      // Update camera aspect ratio and renderer size on window resize
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix(); // Must call this after changing aspect ratio
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    };
+  
+    window.addEventListener('resize', handleResize);
     const textureLoader = new THREE.TextureLoader();
     const textures = [
       textureLoader.load('/leaf.png'), 
@@ -380,6 +388,8 @@ explosionSoundRef.current.onerror = (e) => {
 
     return () => {
       window.removeEventListener('click', shootLaser);
+      window.removeEventListener('resize', handleResize); // Clean up resize listener
+
       mountRef.current.removeChild(renderer.domElement);
     };
 

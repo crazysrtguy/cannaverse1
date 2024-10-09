@@ -468,7 +468,7 @@ const holographicMaterial = new THREE.ShaderMaterial({
         void main() {
             float glow = sin(vUv.y * 10.0 + time) * 0.1 + 0.9;
             float interference = sin(vUv.y * 50.0 + time) * 0.05;
-            gl_FragColor = vec4(0.1, 0.5, 1.0, 0.6) * glow + interference;
+        gl_FragColor = vec4(0.1, 1.0, 0.1, 0.6) * glow + interference;
         }
     `,
     transparent: true,

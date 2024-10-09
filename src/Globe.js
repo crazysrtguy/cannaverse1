@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { FirstPersonControls } from 'three/addons/controls/FirstPersonControls.js';
 import { ImprovedNoise } from 'three/addons/math/ImprovedNoise.js';
-import HUD from './HUD'; // Import the Hud component
+import HUD from './HUD'; // Import the HUD component
 import SideNav from './SideNav';
 
 const Globe = () => {
@@ -102,51 +102,42 @@ const Globe = () => {
   };
 
   const shootLaser = () => {
-    // Set ray origin at the camera and shoot in the forward direction
     raycaster.setFromCamera({ x: 0, y: 0 }, cameraRef.current); // Firing straight forward
   
-    // Check if any planets or objects are hit
     const intersects = raycaster.intersectObjects(planets.current);
   
     if (intersects.length > 0) {
       const hitObject = intersects[0].object;
+      console.log('Laser hit an object:', hitObject);
   
-      console.log('Laser hit an object:', hitObject); // Check if something is hit
-  
-      // Laser visual effect (red line)
       const laserMaterial = new THREE.LineBasicMaterial({ color: laserColor });
       const laserGeometry = new THREE.BufferGeometry().setFromPoints([
-        cameraRef.current.position, // Laser starts from camera
-        intersects[0].point, // Laser goes to hit point
+        cameraRef.current.position,
+        intersects[0].point,
       ]);
       const laserBeam = new THREE.Line(laserGeometry, laserMaterial);
       scene.add(laserBeam);
   
-      // Remove laser beam after 100ms
       setTimeout(() => {
         scene.remove(laserBeam);
       }, 500);
   
-      // Create a simple explosion effect (red sphere)
       const explosionMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
       const explosionGeometry = new THREE.SphereGeometry(50, 16, 16);
       const explosion = new THREE.Mesh(explosionGeometry, explosionMaterial);
       explosion.position.copy(intersects[0].point);
       scene.add(explosion);
   
-      // Remove explosion after 500ms
       setTimeout(() => {
         scene.remove(explosion);
       }, 500);
   
-      // Remove hit object from the scene
       scene.remove(hitObject);
     } else {
       console.log('Laser missed');
     }
   };
   
-
   useEffect(() => {
     const container = containerRef.current;
 
@@ -155,7 +146,7 @@ const Globe = () => {
 
     scene = new THREE.Scene();
     scene.background = new THREE.Color(0xefd1b5);
-    scene.fog = new THREE.FogExp2(0xefd1b5, 0.00055);
+    scene.fog = new THREE.FogExp2(0xefd1b5, 0.00025);
 
     const data = generateHeight(worldWidth, worldDepth);
     camera.position.set(100, 1200, -800);
@@ -167,7 +158,6 @@ const Globe = () => {
     container.appendChild(renderer.domElement);
     rendererRef.current = renderer;
 
-    // Add random planets
     const planetTextures = [
       '/crypto15.png',
       '/crypto16.png',
@@ -178,24 +168,24 @@ const Globe = () => {
 
     for (let i = 1; i < 20; i++) {
       const texture = new THREE.TextureLoader().load(planetTextures[Math.floor(Math.random() * planetTextures.length)]);
-
+    
       const material = new THREE.MeshBasicMaterial({ map: texture });
-      const size = Math.random() * 500 + 1500; // Random size between 500 and 1000
+      const size = Math.random() * 500 + 1500;
       const geometry = new THREE.SphereGeometry(size, 32, 32);
-
+    
       const planet = new THREE.Mesh(geometry, material);
-
-      // Random positions
-      planet.position.x = (Math.random() - 0.5) * 7000; // Random x between -3500 and 3500
-      planet.position.y = Math.random() * 5000 + 3000; // Random y between 3000 and 8000
-      planet.position.z = (Math.random() - 0.5) * 7000; // Random z between -3500 and 3500
-
+    
+      // Increase the range for x, y, z positions
+      planet.position.x = (Math.random() - 0.5) * 20000;  // Increase this value for more separation on x-axis
+      planet.position.y = Math.random() * 8000 + 4000;   // Increase this value for more separation on y-axis
+      planet.position.z = (Math.random() - 0.5) * 20000;  // Increase this value for more separation on z-axis
+    
       scene.add(planet);
-      planets.current.push(planet); // Add planet to array for raycasting
+      planets.current.push(planet);
     }
-
+    
     const controls = new FirstPersonControls(camera, renderer.domElement);
-    controls.movementSpeed = 200;
+    controls.movementSpeed = 250;
     controls.lookSpeed = 0.1;
     controlsRef.current = controls;
 
@@ -220,10 +210,9 @@ const Globe = () => {
 
       controls.update(delta);
 
-      setSpeed(controls.movementSpeed.toFixed(2)); // Update speed state
-      setAltitude(camera.position.y.toFixed(2)); // Update altitude state
+      setSpeed(controls.movementSpeed.toFixed(2));
+      setAltitude(camera.position.y.toFixed(2));
 
-      // Simulate GPS Location
       setGpsLocation(`Lat: ${(camera.position.x / 100).toFixed(2)}, Long: ${(camera.position.z / 100).toFixed(2)}`);
 
       renderer.render(scene, camera);
@@ -231,30 +220,27 @@ const Globe = () => {
 
     animate();
 
+    // Resize handling
+    const onWindowResize = () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    };
+
+    window.addEventListener('resize', onWindowResize);
+
     // Cleanup
     return () => {
       container.removeChild(renderer.domElement);
-    };
-  }, []);
-
-  const handleKeyDown = (event) => {
-    if (event.code === 'Space') {
-      shootLaser(); // Fire laser on space key press
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener('keydown', handleKeyDown);
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('resize', onWindowResize);
     };
   }, []);
 
   return (
     <>
-      <div ref={containerRef}></div>
-      <HUD speed={speed} altitude={altitude} gpsLocation={gpsLocation} />
       <SideNav />
+      <div ref={containerRef} />
+      <HUD speed={speed} altitude={altitude} gpsLocation={gpsLocation} shootLaser={shootLaser} />
     </>
   );
 };

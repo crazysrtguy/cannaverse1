@@ -188,10 +188,24 @@ const ProceduralUniverse = () => {
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2000);
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     const textureLoader = new THREE.TextureLoader();
-
     renderer.setSize(window.innerWidth, window.innerHeight);
     mountRef.current.appendChild(renderer.domElement);
-
+  
+    // Resize event handler
+    const handleResize = () => {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      
+      // Update camera aspect ratio
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+      
+      // Update renderer size
+      renderer.setSize(width, height);
+    };
+  
+    // Add resize listener
+    window.addEventListener('resize', handleResize);
     const textures = [
       textureLoader.load('/leaf.png'), 
       textureLoader.load('/crypto1.png'),
@@ -378,7 +392,9 @@ const ProceduralUniverse = () => {
 
 
   return (
-    <div>
+   
+   
+   <div>
       <button className="floating-btn" onClick={() => setWarpSpeed(!warpSpeed)}>
         {warpSpeed ? 'Normal Speed' : 'Warp Speed'}
       </button>

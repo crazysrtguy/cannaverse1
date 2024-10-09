@@ -2,45 +2,46 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Arial', sans-serif; /* Or any other preferred font */
+  font-family: 'Poppins', sans-serif; /* Changed to Poppins for consistency */
 }
 
 body {
-  background-color: #FFFFFF; /* Or any other color */
+  background-color: #FFFFFF; /* Background color */
   color: #333; /* Default text color */
-  font-size: 16px; /* Default font size */
+  font-size: 4vw; /* Responsive font size based on viewport */
   line-height: 1.5; /* Default line height */
-  overflow-x: hidden; /* Prevent any unexpected horizontal scrolling */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 /* Add a max-width for containers */
 .container {
   width: 100%;
-  max-width: 1200px; /* Maximum width on larger screens */
+  max-width: 1200px; /* Max width on larger screens */
   margin: 0 auto;
   padding: 1rem;
 }
 
 /* Ensure responsive text sizing using rem units */
 h1, h2, h3, p {
-  font-size: 1rem; /* Base font size for smaller screens */
+  font-size: 4vw; /* Responsive base font size */
 }
 
 h1 {
-  font-size: 2rem; /* Adjust for larger screens */
+  font-size: 8vw; /* Adjust for larger screens */
 }
 
 @media (min-width: 768px) {
   h1 {
-    font-size: 2.5rem; /* Larger font size on tablets and above */
+    font-size: 6vw; /* Adjusted for tablets */
   }
 
   body {
-    font-size: 18px; /* Slightly larger base font on tablet screens */
+    font-size: 5vw; /* Adjusted base font on tablet screens */
   }
 }
 
@@ -50,7 +51,7 @@ h1 {
   }
 
   body {
-    font-size: 20px;
+    font-size: 1.25rem; /* Fixed font size on desktop */
   }
 }
 
@@ -94,15 +95,24 @@ img {
 
 /* Button Styles */
 button {
-  padding: 0.75rem 1.5rem;
+  padding: 1rem 2rem; /* Increased padding for better touch targets */
   font-size: 1rem;
   border: none;
   border-radius: 4px;
-  background-color: #007BFF; /* Example button color */
+  background-color: #007BFF; /* Button color */
   color: white;
   cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth transition */
+  width: 100%; /* Make buttons full width on mobile */
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Add media queries for button adjustments */
+@media (min-width: 768px) {
+  button {
+    width: auto; /* Reset button width on larger screens */
+  }
 }

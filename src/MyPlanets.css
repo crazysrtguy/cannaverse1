@@ -64,56 +64,71 @@
     height: 100%;
     perspective: 300px;
     pointer-events: none; 
-    z-index: 1;
+    z-index: 100;
 }
 
   
+#crawl-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    perspective: 400px;
+    z-index: 1000;
+}
+
 #crawl {
     position: absolute;
-    width: 90%; /* Adjust width as needed */
-    bottom: 0;
-
-    left: 5%; /* Centers the crawl text */
-    animation: crawl-animation 125s linear forwards;
-    transform-origin: 50% 100%;
-    pointer-events: none; /* This ensures the crawl text itself can still capture mouse events if needed */
-
-    transform: rotateX(20deg) translateY(100%); /* Starts with translateY(100%) so it begins off-screen */
+    top: 100%;
+    left: 50%;
+    width: 80%;
+    transform: translateX(-50%) rotateX(25deg);
+    animation: crawl 60s linear;
 }
 
 
-.title {
-    font-size: 49px;
-    margin-bottom: 5px;
-    color: yellow;
+@keyframes crawl {
+    0% {
+        top: 90%;
+        transform: translateZ(0) rotateX(25deg);
+    }
+    100% { 
+        top: -6000px;
+        transform: translateZ(-2500px) 
+    }
+}
+.title, .subtitle {
+    text-align: center;
     font-family: 'Pathway Gothic One', sans-serif;
+}
 
+.title {
+    font-size: 120px;
+    margin-bottom: 30px;
+    color: #feda4a;
 }
 
 .subtitle {
-    font-size: 39px;
-    margin-bottom: 5px;
-    color: yellow;
-    font-family: 'Pathway Gothic One', sans-serif;
-
-
+    font-size: 100px;
+    margin-bottom: 50px;
+    color: #feda4a;
 }
 
 .text {
     font-family: 'Pathway Gothic One', sans-serif;
-    font-size: 2em;
-    letter-spacing: 6px;
-
-    font-weight: bold;
-    color: yellow;
-    text-align: center;
-    perspective: 400px;
-    transform: rotateX(20deg) translateY(25%);
-    transform-origin: 50% 100%;
-    line-height: 2.5;
-    overflow: hidden;
+    font-size: 1800px;
+    line-height: 1.5;
+    color: #feda4a;
+    text-align: justify;
 }
 
+/* Ensure the Three.js canvas doesn't overlap the crawl */
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
   
 @keyframes crawl-animation {
     0% {
