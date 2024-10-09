@@ -33,12 +33,18 @@ function MyPlanets() {
         video2.current.play();
         video3.current.play();
         video4.current.play();
-
+    
         if (audioRef.current && audioRef.current.paused) {
-            audioRef.current.play();
+            try {
+                audioRef.current.play().catch(error => {
+                    console.error('Error playing audio:', error);
+                });
+            } catch (error) {
+                console.error('Audio play failed:', error);
+            }
         }
     }
-
+    
     useEffect(() => {   
         const clock = new THREE.Clock();
 
@@ -319,11 +325,11 @@ function MyPlanets() {
                         <div className="title">IN A FUTURE GALAXY NOT SO FAR AWAY</div>
                         <div className="subtitle">CannaVerse Awaits</div>
                         <div className="text">
-                            <p>In the vast expanse of the digital universe, amidst galaxies of codes and chains, rises a force that redefines the cosmos: CannaVerse. Born from the visionary union of the ancient allure of cannabis and the cutting-edge chains of Ethereum and Binance, this realm is not just another constellation in the vast digital sky. It's a revolution.</p>
+                            <p>In the vast expanse of the digital universe, amidst galaxies of codes and chains, rises a force that redefines the cosmos: CannaVerse. Born from the visionary union of the ancient allure of cannabis and the cutting-edge Solana Chain, this realm is not just another constellation in the vast digital sky. It's a revolution.</p>
 
                             <p>Intrepid explorers from distant corners are drawn not merely to gaze at astral wonders but to shape them. They forge and curate planets, turning them into revered NFTs. These celestial bodies, echoing their creator's spirit, don't just float in space — they flourish, rewarding their architects with every rotation.</p>
 
-                            <p>Yet, as the stars shimmer, deeper thrills await. Some visionaries don't just sculpt worlds; they design experiences — gravity-defying roller coasters that span galaxies, weaving between planets, offering rides that are more than thrills. They're legends. And those bold enough to craft these odysseys find fame and fortune as adventurers from all over flock to experience their genius.</p>
+                            <p>Yet, as the stars shimmer, deeper thrills await. Some visionaries don't just sculpt worlds; they design experiences — gravity-defying coasters that span galaxies, weaving between planets, offering rides that are more than thrills. They're legends. And those bold enough to craft these odysseys find fame and fortune as adventurers from all over flock to experience their genius.</p>
 
                             <p>On the horizon of this sprawling universe is an innovation that promises to redefine commerce. The 3D Cannabis Marketplace, a shimmering nexus of trade and wonder, prepares to open its gates. With the winds of federal legality blowing strong, this marketplace is poised to be the epicenter of the new age of trade.</p>
 
